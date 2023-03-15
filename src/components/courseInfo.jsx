@@ -1,6 +1,6 @@
 import { useEffect,useState } from "react";
 import LessonsItem from "./lessonsItem";
-
+import ReactPlayer from 'react-player'
 
 const CourseInfo = ({course}) => {
   const [currentLessons, setCurrentLessons] = useState(course.lessons[0]);
@@ -12,12 +12,22 @@ console.log(course.lessons[0].link)
       
  
      
-    <video 
-    type="m3u8"
-          controls 
-          autoPlay
-          src={{uri:currentLessons.link, type:"m3u8"}} />
-       
+    <video
+      id="video"
+      className="video-js"
+      controls
+      preload="auto"
+      width="640"
+      height="264"
+      data-setup="{}"
+      crossOrigin="true"
+    >
+      <source
+        src="http://wisey.app/videos/the-power-of-self-discipline-how-to-stay-on-track/lesson-1/AppleHLS1/lesson-1.m3u8"
+        type="application/x-mpegURL"
+      />
+    </video>
+
     </div>
     <div className="card-content">
     <span className="card-title">{course.title}</span>

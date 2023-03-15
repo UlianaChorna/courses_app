@@ -1,16 +1,20 @@
 import { Link } from "react-router-dom";
 
 const Header = () => {
-    return ( 
-        <nav className="#424242 grey darken-3">
-        <div className="nav-wrapper">
-          <Link to="/" className="brand-logo">The best courses ever</Link>
-          <ul id="nav-mobile" className="right hide-on-med-and-down">
-          <li><Link to="/about">About</Link></li>
-            <li><Link to="/contact">Contact</Link></li>
+    return (
+      <div className="navbar"> 
+        <nav >
+        
+          <div className="menu-area">
+          <Link to="/" className="link">The best courses ever</Link>
+          <ul id="nav-mobile" >
+          <li><Link to="/about" className="link">About</Link></li>
+            <li><Link to="/contact" className="link">Contact</Link></li>
           </ul>
+          </div>
+          </nav>
         </div>
-      </nav>
+      
      );
 }
  

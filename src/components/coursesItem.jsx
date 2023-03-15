@@ -1,7 +1,9 @@
 
+import { useState } from "react";
 import {Link } from "react-router-dom";
 
 const CoursesItem = (props) => {
+  const [isHover, setIsHover] = useState(false);
     const {id,
       title,
       previewImageLink,
@@ -13,19 +15,27 @@ const CoursesItem = (props) => {
         } = props;
         
     return (
-        <div className="card">
-        <div className="card-image">
-          <img src={previewImageLink+'/cover.webp'} alt={title} />
-        </div>
-        <div className="card-content">
-        <span className="card-title">{title}</span>
-        <span className="card-lessonsCount">{lessonsCount}</span>
-        <span className="card-rating">{rating}</span>
-        <span className="card-skills">{skills}</span>
-          <p>{description.slice(0,60)}...</p>
-        </div>
+        <div className="card"
+        onMouseEnter={() => setIsHover(true)}
+        onMouseLeave={() => setIsHover(false)}>
+          <div className="card-image">
+            <img src={previewImageLink+'/cover.webp'} alt={title} />
+          </div>
+          {isHover && (
+            <>
+            
+          <div className="card-content">
+          <span className="card-title">{title}</span>
+          <p className="card-title">Lesson Count:{lessonsCount}</p>
+          <p className="card-title">Rating:{rating}</p>
+          <p className="card-title">{skills}</p>
+            <p className="card-title">{description.slice(0,700)}...</p>
+          </div>
+          </>
+          )}
         <div className="card-action">
-          <Link to={`/${id}`} className="btn"> Watch category</Link>
+          <button className="btn"><Link to={`/${id}`} > Watch category</Link></button>
+          
         </div> 
         </div> );
 }
