@@ -1,6 +1,6 @@
-import { useEffect,useState } from "react";
-import LessonsItem from "./lessonsItem";
-import ReactPlayer from 'react-player'
+import { useState } from "react";
+
+import Player from "./player";
 
 const CourseInfo = ({course}) => {
   const [currentLessons, setCurrentLessons] = useState(course.lessons[0]);
@@ -9,9 +9,9 @@ const CourseInfo = ({course}) => {
 console.log(course.lessons[0].link)
     return (  <div className="card">
     <div className="card-image">
-      
+       <Player videoUri={'http://wisey.app/videos/lack-of-motivation-how-to-overcome-it/lesson-1/AppleHLS1/lesson-1.m3u8'}/>
  
-     
+{/*      
     <video
       id="video"
       className="video-js"
@@ -26,7 +26,7 @@ console.log(course.lessons[0].link)
         src="http://wisey.app/videos/the-power-of-self-discipline-how-to-stay-on-track/lesson-1/AppleHLS1/lesson-1.m3u8"
         type="application/x-mpegURL"
       />
-    </video>
+    </video> */}
 
     </div>
     <div className="card-content">
