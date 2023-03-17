@@ -1,9 +1,9 @@
 import { useParams,useHistory } from "react-router-dom";
-import { getCourseById,getToken } from "../api";
+import { getCourseById,getToken } from "../../api";
 import { useEffect,useState } from "react";
-import Preloader from "./preloader";
+import Preloader from "../preloder/preloader";
 import CourseInfo from "./courseInfo";
-
+import "./course.css"
 
 
 const Course = () => {

@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { getAllCourses, getToken } from "../api";
-import CoursesList from "../components/coursesList";
-import Pagination from "../components/pagination";
-
-import Preloader from "../components/preloader";
-
+import CoursesList from "../components/coursesList/coursesList";
+import Pagination from "../components/pagination/pagination";
+import Footer from '../components/footer/footer'
+import Preloader from "../components/preloder/preloader";
+import Header from "../components/header/header";
 
 const Home = () => {
     const [catalog,setCatalog] = useState([]);
@@ -37,7 +37,7 @@ const Home = () => {
     return ( 
       
         <>
-        
+          <Header/>
         {!catalog.length ? 
         (<Preloader/>) :
         ( <CoursesList catalog={currentCourses} />)}
@@ -46,8 +46,9 @@ const Home = () => {
         totalCourses={catalog.length}
        setCurrentPage={setCurrentPage}
        currentPage={currentPage} />
-       
+       <Footer/>
         </>
+    
      );
 }
  
