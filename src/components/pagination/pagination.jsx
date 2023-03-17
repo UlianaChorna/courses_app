@@ -3,7 +3,7 @@ import "./pagination.css"
 
 function Pagination({coursesPerPage, totalCourses, setCurrentPage,currentPage}) {
     const pageNumbers =[]
-    for (let i = 1;i <= Math.ceil(totalCourses/ coursesPerPage); i++){
+    for (let i = 1;i <= Math.ceil(totalCourses/ coursesPerPage); i++) {
         pageNumbers.push(i)
     }
   return (
@@ -12,7 +12,7 @@ function Pagination({coursesPerPage, totalCourses, setCurrentPage,currentPage}) 
     {
         pageNumbers.map((page,index)=>{
             return <button key ={index} onClick= {() => setCurrentPage(page)} 
-            className={page == currentPage ? 'active' : ''}>{page}
+            className={page === currentPage ? 'active' : ''}>{page}
             </button>
         })
     }

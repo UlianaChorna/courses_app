@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+
 import { useState } from "react";
 import ButtonDownload from "../buttonDownload/buttonDownload";
 import "./course.css"
@@ -6,15 +6,13 @@ import "./course.css"
 
 const CourseInfo = ({course}) => {
   const [currentLessons, setCurrentLessons] = useState(course.lessons[0]);
-console.log(currentLessons)
-
 
     return (  <div className="card">
       <div className="card-title">{course.title}</div>
       <div className="card-desc">{course.description}</div>
     <div className="card-video">
       {currentLessons.status !== 'locked' ? (
-        <Player videoUri={currentLessons.link}  />
+        <Player videoUri={currentLessons.link} lessonId ={currentLessons.id} muted={false}/>
       ) : (
         <div className="lesson-locked"> Lessons is locked</div>
       )}

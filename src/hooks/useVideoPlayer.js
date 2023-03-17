@@ -16,41 +16,61 @@ export const useVideoPlayer = (videoElement) => {
   }, [playing, videoElement]);
 
   const handleOnTimeUpdate = () => {
-    const progress =
+    const progress = 
       (videoElement.current.currentTime / videoElement.current.duration) * 100;
     setProgress(progress);
-    // setCurrentTime(videoElement.current.currentTime);
+    setCurrentTime(videoElement.current.currentTime);
   };
 
-  const handleVideoProgress = (event) => {
-    const manualChange = Number(event.target.value);
-    videoElement.current.currentTime =
-      (videoElement.current.duration / 100) * manualChange;
-    setProgress(manualChange);
-    // setCurrentTime(videoElement.current.currentTime);
+  const handleLastVideoProgress = (lessonId) => {
+    if (lessonId) {
+    const playingHistory = JSON.parse(localStorage.getItem("playingHistory") || "[]");
+    const lastLessonProgress = playingHistory.find(history => history.lessonId === lessonId)
+    if (lastLessonProgress) {
+      const currentTime = Number(lastLessonProgress.progress)
+      videoElement.current.currentTime = currentTime;
+      setCurrentTime(currentTime);
+      const progress = (currentTime / videoElement.current.duration) * 100;
+      setProgress(progress);
+    } 
+  }
   };
+
+  const saveVideoProgress = (lessonId) => {
+    if (lessonId) {
+    const playingHistory = JSON.parse(localStorage.getItem("playingHistory") || "[]");
+    const lastLessonProgress = playingHistory.find(history => history.lessonId === lessonId)
+    const videoProgress = Math.round(videoElement.current.currentTime).toFixed(2)
+    if (lastLessonProgress) {
+        lastLessonProgress.progress = videoProgress
+    } else {
+      playingHistory.push({
+        lessonId : lessonId,
+        progress : videoProgress
+      })
+    }
+    localStorage.setItem('playingHistory', JSON.stringify(playingHistory));
+  }
+  }
 
   const handleVideoSpeed = (event) => {
     let newSpeed = speed
-    if(event.key === 'y'){
+    if (event.key === 'y') {
 			newSpeed = newSpeed + 0.5;
-	}
+	 }
 		else if (event.key === 'n') {
       newSpeed = newSpeed - 0.5;
-	}
-if(newSpeed  <=  0){
-  videoElement.current.pause();
-}else {
-  videoElement.current.playbackRate = newSpeed;
-  setSpeed(newSpeed);
-  console.log(newSpeed)
-}
-   
-    
+	 }
+   if (newSpeed  <=  0) {
+     videoElement.current.pause();
+   } else {
+      videoElement.current.playbackRate = newSpeed;
+      setSpeed(newSpeed);
+   }
   };
 
-  const toggleMute = () => {
-    setMuted(!muted);
+  const toggleMute = (muted) => {
+    setMuted(muted);
   };
 
   useEffect(() => {
@@ -60,16 +80,15 @@ if(newSpeed  <=  0){
   }, [muted, videoElement]);
 
   return {
-    
     playing,
     progress,
     muted,
     speed,
-    currentTime,
     togglePlay,
     handleOnTimeUpdate,
-    handleVideoProgress,
+    handleLastVideoProgress,
     handleVideoSpeed,
     toggleMute,
+    saveVideoProgress,
   };
 };

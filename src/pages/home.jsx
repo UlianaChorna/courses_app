@@ -8,31 +8,19 @@ import Header from "../components/header/header";
 
 const Home = () => {
     const [catalog,setCatalog] = useState([]);
-    const [token,setToken] = useState();
     const [currentPage, setCurrentPage] = useState(1);
     const [coursesPerPage] = useState(10)
 
-
     useEffect(() => {
-        
         getToken().then(data =>{
-            setToken(data.token);
             getAllCourses(data.token).then(data =>
-                setCatalog(data.courses) )
-                
+                setCatalog(data.courses) )   
         });
     },[]);
 
     const lastCoursesIndex = (currentPage * coursesPerPage)
     const firstCoursesIndex= lastCoursesIndex - coursesPerPage;
     const currentCourses = catalog.slice(firstCoursesIndex,lastCoursesIndex)
-
-    // useEffect(() => {
-    //     console.log(currentCourses, lastCoursesIndex, firstCoursesIndex)
-    //    },[])
-   
-   
-
    
     return ( 
       

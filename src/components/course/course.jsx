@@ -8,16 +8,13 @@ import "./course.css"
 
 const Course = () => {
     const {courseId} = useParams();
-  
     const[course,setCourse]  = useState();
     const {goBack} = useHistory()
 
     useEffect(() => {
         getToken().then(data =>{
         getCourseById(courseId, data.token).then(data =>{
-            console.log(data);
-            setCourse(data)})
-            
+            setCourse(data)})       
         })
            
     },[courseId])

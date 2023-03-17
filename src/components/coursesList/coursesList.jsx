@@ -1,12 +1,6 @@
-
 import CoursesItem from "./coursesItem";
 
-
-
 const CoursesList  = ({catalog}) => {
-
-
-
     return ( 
         <>
      

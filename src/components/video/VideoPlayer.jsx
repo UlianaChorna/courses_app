@@ -3,14 +3,13 @@ import {useVideoPlayer } from "../../hooks/useVideoPlayer";
 import videojs from "video.js";
 import 'video.js/dist/video-js.css';
 
- const VideoPlayer = ({videoUri}) => {
+ const VideoPlayer = ({videoUri, lessonId, muted}) => {
   const videoNode = useRef(null);
   const [player, setPlayer] = useState(null);
-  // const forceUpdate = useCallback(() => setPlayer(null), []);
 
   const { speed, handleVideoSpeed } = useVideoPlayer(videoNode);
-  const { progress, handleOnTimeUpdate } = useVideoPlayer(videoNode);
-  // console.log(player)
+  const { progress, handleOnTimeUpdate, handleLastVideoProgress, saveVideoProgress, toggleMute } = useVideoPlayer(videoNode);
+
   useEffect(() => {
     const playerState = {
       fill: true,
@@ -28,17 +27,18 @@ import 'video.js/dist/video-js.css';
         },
       ],
     }
-    console.log(playerState)
+    
     if (videoNode.current) {
+    handleLastVideoProgress(lessonId);
+    toggleMute(muted);
     const _player = videojs(videoNode.current, playerState);
     setPlayer(_player);
-    console.log(_player)
     return () => {
       if (player !== null) {
         player.dispose();
       }
     };
-  }
+   }
     
   }, []);
 
@@ -50,9 +50,11 @@ import 'video.js/dist/video-js.css';
           ref={videoNode}
           onKeyPress={handleVideoSpeed}
           onTimeUpdate={handleOnTimeUpdate}
+          onPause={ e => saveVideoProgress(lessonId)}
           className="video-js"
           value={speed}
-        > </video>
+        > 
+        </video>
       </div>
       <div className="video-progress">
         <span>Progress:</span>
