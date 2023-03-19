@@ -1,12 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
-import {useVideoPlayer } from "../../hooks/useVideoPlayer";
+import { useVideoPlayer } from "../../hooks/useVideoPlayer";
 import videojs from "video.js";
 import 'video.js/dist/video-js.css';
 
- const VideoPlayer = ({videoUri, lessonId, muted}) => {
+const VideoPlayer = ({ videoUri, lessonId, muted }) => {
   const videoNode = useRef(null);
   const [player, setPlayer] = useState(null);
-
+  const [videoUrl, setVideoUrl] = useState(videoUri);
   const { speed, handleVideoSpeed } = useVideoPlayer(videoNode);
   const { progress, handleOnTimeUpdate, handleLastVideoProgress, saveVideoProgress, toggleMute } = useVideoPlayer(videoNode);
 
@@ -17,43 +17,47 @@ import 'video.js/dist/video-js.css';
       autoplay: true,
       controls: true,
       crossOrigin: true,
-      className:"video",
+      className: "video",
       preload: "metadata",
       playbackRates: [0, 0.5, 1, 1.5, 2],
-      sources: [
-        {
-          src: videoUri,
-          type: "application/x-mpegURL",
-        },
-      ],
     }
-    
+
     if (videoNode.current) {
-    handleLastVideoProgress(lessonId);
-    toggleMute(muted);
-    const _player = videojs(videoNode.current, playerState);
-    setPlayer(_player);
-    return () => {
-      if (player !== null) {
-        player.dispose();
-      }
-    };
-   }
-    
+      handleLastVideoProgress(lessonId);
+      toggleMute(muted);
+      const _player = videojs(videoNode.current, playerState);
+      setPlayer(_player);
+      return () => {
+        if (player !== null) {
+          player.dispose();
+        }
+      };
+    }
+
   }, []);
+
+  useEffect(() => {
+    setVideoUrl(videoUri)
+    console.log(videoUri)
+  }, [videoUri])
+
 
   return (
     <>
-     
-      <div data-vjs-player  className="video">
+      <div data-vjs-player className="video">
         <video
           ref={videoNode}
           onKeyPress={handleVideoSpeed}
           onTimeUpdate={handleOnTimeUpdate}
-          onPause={ e => saveVideoProgress(lessonId)}
+          onPause={e => saveVideoProgress(lessonId)}
           className="video-js"
           value={speed}
-        > 
+        >
+          <source
+            src={videoUrl}
+            type="application/x-mpegURL"
+          />
+
         </video>
       </div>
       <div className="video-progress">

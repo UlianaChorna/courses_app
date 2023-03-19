@@ -1,37 +1,31 @@
-
-
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
-
-/* * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-} */
 
 *:focus,
 *:active {
   outline: none !important;
   -webkit-tap-highlight-color: transparent;
 }
-.text-footer{
-    height: 30px;
-    margin-left: 10px;
+
+.text-footer {
+  height: 30px;
+  margin-left: 10px;
 
 }
+
 .page-footer {
-    bottom: 0;
-    width: 100%;
-    height: 60px; 
-    color: #fff;
-    display: flex;
-    margin-top: 20px;
-    justify-content: center;
-    font-weight: 900;
-    margin-left: 40px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    background-color: linear-gradient(0deg,transparent,rgb(223, 143, 218) 100%);          
-  }
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  color: #fff;
+  display: flex;
+  margin-top: 20px;
+  justify-content: center;
+  font-weight: 900;
+  margin-left: 40px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background-color: linear-gradient(0deg, transparent, rgb(223, 143, 218) 100%);
+}
 
 
 

@@ -1,42 +1,45 @@
 import API_URL from "./config";
 
-const getAllCourses = async (token) => {
-    var options = {  
-             method: 'GET',
-             headers: {
-               'Authorization': 'Bearer ' + token
-             }
-            }
-  const response = await fetch(API_URL +  "core/preview-courses", options)
-  return  await response.json();
-};
-const getCourseById = async (courseId,token) => {
-    var options = {  
-             method: 'GET',
-             headers: {
-               'Authorization': 'Bearer ' + token
-             }
-            }
-  const response = await fetch(API_URL +  "core/preview-courses/" + courseId, options)
-  return  await response.json();
-};
-
-const getToken = async () => {
-    const response = await fetch(API_URL + "auth/anonymous?platform=subscriptions")
-   
-    return  await response.json();
+const getAllCourses = async () => {
+  var options = {
+    method: "GET",
+    headers: {
+      Authorization: "Bearer " + getToken(),
+    },
   };
+  const response = await fetch(API_URL + "core/preview-courses", options);
+  return await response.json();
+};
 
-//   const getOptions = () => {
-//     const token = getToken().then(data => { return data.token})
-//     console.log(token)
-//     var options = {  
-//      method: 'GET',
-//      headers: {
-//        'Authorization': 'Bearer ' + token
-//      }
-//    }
-//    return options;
-//   }
+const getCourseById = async (courseId) => {
+  var options = {
+    method: "GET",
+    headers: {
+      Authorization: "Bearer " + getToken(),
+    },
+  };
+  const response = await fetch(
+    API_URL + "core/preview-courses/" + courseId,
+    options
+  );
+  return await response.json();
+};
 
-export  {getAllCourses,getToken,getCourseById};
+const getToken = () => {
+  let token = JSON.parse(localStorage.getItem("token")) || null;
+  if (!token) {
+      token =  auth().then(data => data.token);
+      localStorage.setItem("token", JSON.stringify(token)); 
+  } 
+  return token;
+}
+
+const auth = async () => {
+  const response = await fetch(
+    API_URL + "auth/anonymous?platform=subscriptions"
+  );
+
+  return await response.json();
+};
+
+export { getAllCourses, getCourseById };

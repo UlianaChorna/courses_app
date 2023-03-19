@@ -1,121 +1,133 @@
-.btn{
-    font-weight: 900;
-      letter-spacing: 1px;
-      text-decoration: none;
-      margin: 20px;
-      width: 300px;
-      text-transform: uppercase;
-      color: #eee;
-      display: grid;
-      color: #313133;
-      background: #cf87b6;
-    background: linear-gradient(90deg, rgb(230, 129, 213) 0%, rgb(209, 179, 200) 100%);
-      border: none;
-      box-shadow: 12px 12px 24px rgba(224, 137, 201, 0.64);
-      transition: all 0.3s ease-in-out 0s;
-      cursor: pointer;
-      padding: 1em 1.5em;
-      background: linear-gradient(90deg, rgb(234, 175, 230), rgb(208, 130, 207))
-  }
+.btn {
+  font-weight: 900;
+  letter-spacing: 1px;
+  text-decoration: none;
+  margin: 20px;
+  width: 300px;
+  text-transform: uppercase;
+  color: #eee;
+  display: grid;
+  color: #313133;
+  background: #cf87b6;
+  background: linear-gradient(90deg, rgb(230, 129, 213) 0%, rgb(209, 179, 200) 100%);
+  border: none;
+  box-shadow: 12px 12px 24px rgba(224, 137, 201, 0.64);
+  transition: all 0.3s ease-in-out 0s;
+  cursor: pointer;
+  padding: 1em 1.5em;
+  background: linear-gradient(90deg, rgb(234, 175, 230), rgb(208, 130, 207))
+}
 
-  /* .card-video{
+/* .card-video{
     display: flex;
     justify-content:flex-start;
   } */
-  .list-lesson{
-    font-weight: bold;
-    font-size: 20px;
-      letter-spacing: 1px;
-      text-decoration: none;
-      margin: 20px 0px;
-      text-transform: uppercase;
-      color: #eee;
-      display: grid;
-      color: #313133;
-      border: none;
-      cursor: pointer;
-      background-color: rgb(238, 180, 205);
-  }
-  .list-lesson:hover, .button:focus {
-    color: #313133;
-    transform: translateY(-6px);
-  }
-  .list-course{
-    /* margin: 20px; */
-    margin-top: 50px;
-    grid-template-columns: repeat(auto-fill,minmax(400px, 4fr));
-    gap: 1rem;
-    font-weight: 400;
-    letter-spacing: 1px;
-    font-size: 30px;
-    margin: 20px;
-    text-transform: uppercase;
-   
-  }
-  .lesson-locked{
-    color: red;
-    font-weight: 400;
-    letter-spacing: 1px;
-    font-size: 100px;
-    margin: 10px 50px;
-    text-transform: uppercase;
-  }
-  .card-content{
-    flex-grow: 1;
-    height: auto;
-  }
-  .video{
-  
-    width: 500px !important ;
-    height: 300px !important;}
-  .video-js {
-    position: relative !important;
-    width: 400px ;
-    height: 300px ;
-    border-radius: 20px;
-    box-sizing:border-box !important;
-  }
-  .card-title{
-    color: #1e1f49;
-    font-weight: 900;
-    letter-spacing: 1px;
-    font-size: 50px;
-    margin-top: 30px;
-    margin-left: 20px;
-    text-transform: uppercase;
-  }
-  .card-desc{
-    color: #1e1f49;
-    font-weight: 200;
-    letter-spacing: 1px;
-    font-size: 30px;
-    margin-bottom: 40px;
-    margin-left: 20px;
-    text-transform: uppercase;
-  
-  }
-  .video{
-    width: 300px;
-    height: 200px;
-  }
-  .speed{
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-decoration: none;
-    margin: 20px 30px;
-    text-transform: uppercase;
-    color: #eee;
-    display: grid;
-    color: #313133;
-    border: none;
-    cursor: pointer;
-  }
-  .card-name{
-    color: #1e1f49;
-    font-weight: 500;
-    letter-spacing: 5px;
-    font-size:medium;
-    margin: 20px;
-    font-size: 24px;
-    text-transform: uppercase;
-  }
+.list-lesson {
+  font-weight: bold;
+  font-size: 20px;
+  letter-spacing: 1px;
+  text-decoration: none;
+  margin: 20px 0px;
+  text-transform: uppercase;
+  color: #eee;
+  display: grid;
+  color: #313133;
+  border: none;
+  cursor: pointer;
+  background-color: rgb(238, 180, 205);
+}
+
+.list-lesson:hover,
+.button:focus {
+  color: #313133;
+  transform: translateY(-6px);
+}
+
+.list-course {
+  margin-top: 50px;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 4fr));
+  gap: 1rem;
+  font-weight: 400;
+  letter-spacing: 1px;
+  font-size: 30px;
+  margin: 20px;
+  text-transform: uppercase;
+
+}
+
+.lesson-locked {
+  color: red;
+  font-weight: 400;
+  letter-spacing: 1px;
+  font-size: 100px;
+  margin: 10px 50px;
+  text-transform: uppercase;
+}
+
+.card-content {
+  flex-grow: 1;
+  height: auto;
+}
+
+.video {
+
+  width: 500px !important;
+  height: 300px !important;
+}
+
+.video-js {
+  position: relative !important;
+  width: 400px;
+  height: 300px;
+  border-radius: 20px;
+  box-sizing: border-box !important;
+}
+
+.card-title {
+  color: #1e1f49;
+  font-weight: 900;
+  letter-spacing: 1px;
+  font-size: 50px;
+  margin-top: 30px;
+  margin-left: 20px;
+  text-transform: uppercase;
+}
+
+.card-desc {
+  color: #1e1f49;
+  font-weight: 200;
+  letter-spacing: 1px;
+  font-size: 30px;
+  margin-bottom: 40px;
+  margin-left: 20px;
+  text-transform: uppercase;
+
+}
+
+.video {
+  width: 300px;
+  height: 200px;
+}
+
+.speed {
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-decoration: none;
+  margin: 20px 30px;
+  text-transform: uppercase;
+  color: #eee;
+  display: grid;
+  color: #313133;
+  border: none;
+  cursor: pointer;
+}
+
+.card-name {
+  color: #1e1f49;
+  font-weight: 500;
+  letter-spacing: 5px;
+  font-size: medium;
+  margin: 20px;
+  font-size: 24px;
+  text-transform: uppercase;
+}
