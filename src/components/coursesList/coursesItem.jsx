@@ -14,7 +14,7 @@ const CoursesItem = (props) => {
     meta,
     rating,
     skills } = props;
-  console.log(props)
+
   return (
     <div className="card"
       onMouseEnter={() => setIsHover(true)}

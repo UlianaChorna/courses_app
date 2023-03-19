@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getAllCourses } from "../api";
+import { getAllCourses, auth } from "../api";
 import CoursesList from "../components/coursesList/coursesList";
 import Pagination from "../components/pagination/pagination";
 import Footer from '../components/footer/footer'
@@ -12,8 +12,11 @@ const Home = () => {
     const [coursesPerPage] = useState(10)
 
     useEffect(() => {
-        getAllCourses().then(data =>
-            setCatalog(data.courses))
+        auth().then(data => {
+            getAllCourses(data.token).then(data =>
+                setCatalog(data.courses))
+        })
+       
     }, []);
 
     const lastCoursesIndex = (currentPage * coursesPerPage)

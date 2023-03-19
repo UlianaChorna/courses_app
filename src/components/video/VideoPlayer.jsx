@@ -37,8 +37,7 @@ const VideoPlayer = ({ videoUri, lessonId, muted }) => {
   }, []);
 
   useEffect(() => {
-    setVideoUrl(videoUri)
-    console.log(videoUri)
+    setVideoUrl(videoUri) 
   }, [videoUri])
 
 
